@@ -1,0 +1,226 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>My-Bank | Personal Details</title>
+
+        <!-- CSS FILES -->
+
+        <link href="{% static 'css/bootstrap.min1.css' %}" rel="stylesheet">
+
+        <link href="{% static 'css/bootstrap-icons1.css' %}" rel="stylesheet">
+
+        <link href="{% static 'css/tooplate-kool-form-pack2.css' %}" rel="stylesheet">
+
+
+        <script>
+var subjectObject = {
+ "Alappuzha": {
+    "Chengannur": ["savings", "current"],
+    "Mavelikara": ["savings", "current"],
+    "Kuttanad": ["savings", "current"],
+  },
+  "Ernakulam": {
+    "Muvattupuzha": ["savings", "current"],
+    "Aluva": ["savings", "current"],
+    " Angamaly": ["savings", "current"],
+  },
+  "Idukki": {
+    " Thodupuzha": ["savings", "current"],
+    "Devikulam": ["savings", "current"],
+  },
+  "Kannur": {
+    "Payyanur": ["savings", "current"],
+    "Thalassery": ["savings", "current"],
+},
+  "Kasaragod": {
+    "Kasaragod": ["savings", "current"],
+},
+  "Kollam": {
+    "Karunagappally": ["savings", "current"],
+    "Punalur": ["savings", "current"],
+},
+  "Kottayam": {
+    "Palai": ["savings", "current"],
+    "Changanassery": ["savings", "current"],
+},
+  "Kozhikode": {
+    "Vatakara": ["savings", "current"],
+    "Ramanattukara": ["savings", "current"],
+},
+  "Malappuram": {
+    "Kondotty": ["savings", "current"],
+    "Nilambur": ["savings", "current"],
+},
+  "Palakkad": {
+    " Alathur": ["savings", "current"],
+    "Pattambi": ["savings", "current"],
+},
+  "Pathanamthitta": {
+    "Adoor": ["savings", "current"],
+    "Thiruvalla": ["savings", "current"],
+},
+  "Thiruvananthapuram": {
+    "Attingal": ["savings", "current"],
+    "Varkala": ["savings", "current"],
+},
+  "Thrissur": {
+    "Guruvayur": ["savings", "current"],
+    " Chalakkudy": ["savings", "current"],
+},
+  "Wayanad": {
+    "Kalpetta": ["savings", "current"],
+    "Mananthavady": ["savings", "current"],
+}
+}
+window.onload = function() {
+  var subjectSel = document.getElementById("subject");
+  var topicSel = document.getElementById("topic");
+  var chapterSel = document.getElementById("chapter");
+  for (var x in subjectObject) {
+    subjectSel.options[subjectSel.options.length] = new Option(x, x);
+  }
+  subjectSel.onchange = function() {
+    //empty Chapters- and Topics- dropdowns
+    chapterSel.length = 1;
+    topicSel.length = 1;
+    //display correct values
+    for (var y in subjectObject[this.value]) {
+      topicSel.options[topicSel.options.length] = new Option(y, y);
+    }
+  }
+  topicSel.onchange = function() {
+    //empty Chapters dropdown
+    chapterSel.length = 1;
+    //display correct values
+    var z = subjectObject[subjectSel.value][this.value];
+    for (var i = 0; i < z.length; i++) {
+      chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);
+    }
+  }
+}
+</script>
+
+
+    </head>
+  <body>
+
+       <section class="hero-section d-flex justify-content-center align-items-center">
+       <div class="container">
+       <div class="row">
+       <div class="col-lg-6 col-12 mx-auto">
+       <form class="custom-form" role="form" method="post">
+       {% csrf_token %}
+
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-12">
+               <div class="form-floating">
+                  <h6>Name
+                   <input class="form-control" type="text" name="name" placeholder="Enter your name" /></h6>
+               </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-12">
+               <div class="form-floating mb-4 p-0">
+                   <h6>Gender
+                   <select class="form-control" name="gender">
+                       <option value="" selected>Gender</option>
+                       <option value=""></option>
+                       <option value="male">male</option>
+                       <option value="female">female</option>
+                       <option value="other">other</option>
+                   </select></h6>
+               </div>
+            </div>
+
+             <div class="col-lg-6 col-md-6 col-12">
+                 <div class="form-floating mb-4 p-0">
+                     <h6>Date of Birth
+                         <input class="form-control" type="date" name="dob" placeholder="Enter your date of birth"/></h6>
+                     <h6>Age
+                         <input class="form-control" type="text" name="age" placeholder="Enter your Age"/></h6>
+                     <h6>Contact Number<span>*</span>
+                         <input class="form-control" type="text" name="mob_no" placeholder="Enter your Age"/></h6>
+                     <h6>Email Address<span>*</span>
+                         <input class="form-control" type="text" name="email" placeholder="Enter your Email"/></h6>
+                     <h6>Full Address
+                         <input class="form-control" type="text" name="address" placeholder="Enter your Address"/></h6>
+                 </div>
+             </div>
+
+
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="form-floating mb-4 p-0">
+                    <div class="title-block">
+
+                    District: <select class="form-control" name="dist" id="subject">
+               <option value="selected" selected="selected">Select District</option>
+                    </select><br><br>
+                        Branch <select class="form-control" name="branch" id="topic">
+                        <option value="selected" selected="selected">Please select district first</option>
+                    </select>
+                        <br><br>
+                        Account type <select class="form-control" name="acc_type" id="chapter">
+                        <option value="selected" selected="selected">Type of account </option>
+                    </select>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="form-floating mb-4 p-0">
+                    <h6>Materials Provided<span></span>
+                        <div class="form-check mb-4" >
+                            <input name ="mat_pro" class="form-check-input" type="checkbox" value="Credit Card" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">Credit Card</label><br>
+                            <input name ="mat_pro" class="form-check-input" type="checkbox" value="Debit Card" id="flexCheckDefault1">
+                            <label class="form-check-label" for="flexCheckDefault1">Debit Card</label><br>
+                            <input name ="mat_pro" class="form-check-input" type="checkbox" value="Cheque Book" id="flexCheckDefault2">
+                            <label class="form-check-label" for="flexCheckDefault2">Cheque Book</label>
+                        </div>
+                    </h6>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-6">
+                <div class="form-floating mb-2 p-0">
+                </div>
+            </div>
+
+                <div class="col-lg-6 col-md-6 col-12">
+                    <button type="submit" value="SUBMIT">Submit</button>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                    <a href="{% url 'logout' %}" class="custom-btn btn btn-lg">Logout</a>
+                </div>
+
+
+        </div>
+       </form>
+       </div>
+       </div>
+       </div>
+           <div class="video-wrap">
+               <video autoplay="" loop="" muted="" class="custom-video" poster="">
+                   <source src="{% static 'videos/video1.mp4' %}" type="video/mp4">
+               </video>
+           </div>
+       </section>
+
+        <script src="{% static 'js/jquery.min1.js' %}"></script>
+        <script src="{% static 'js/bootstrap.bundle.min1.js' %}"></script>
+        <script src="{% static 'js/countdown1.js' %}"></script>
+        <script src="{% static 'js/init1.js' %}"></script>
+  </body>
+</html>
+

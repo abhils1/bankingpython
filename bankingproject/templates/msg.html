@@ -1,0 +1,91 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>My-Bank | Login page</title>
+
+        <!-- CSS FILES -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,700;1,200&family=Unbounded:wght@400;700&display=swap" rel="stylesheet">
+
+        <link href="{% static 'css/bootstrap.min1.css' %}" rel="stylesheet">
+
+        <link href="{% static 'css/bootstrap-icons1.css' %}" rel="stylesheet">
+
+        <link href="{% static 'css/tooplate-kool-form-pack1.css' %}" rel="stylesheet">
+
+        <link href="{% static 'css/style1.css' %}" rel="stylesheet">
+
+
+
+    </head>
+
+    <body>
+
+        <main>
+
+           <nav class="navbar fixed-top navbar-expand-lg">
+            <div class="container">
+
+                <a href="/" class="navbar-brand">
+                    <i class="bi-layers"></i> MY-BANK
+                </a>
+
+
+            </div>
+        </nav>
+
+
+            <section class="hero-section d-flex justify-content-center align-items-center">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-5 col-12 mx-auto">
+                            <form class="custom-form login-form" role="form" method="post">
+                                {%csrf_token %}
+
+
+                                <h2>Application Accepted</h2>
+                                <p></p>
+                                <div class="alert success">
+                                    <strong>Success!</strong> Details added successfully.
+                                       <a href="/" class="navbar-brand">
+                                           <i class="bi-layers"></i> Go Home
+                                       </a>
+                                </div>
+
+ </form>
+    </div>
+                    </div>
+                </div>
+                <div class="video-wrap">
+                    <video autoplay="" loop="" muted="" class="custom-video" poster="">
+                        <source src="{% static 'videos/video1.mp4' %}" type="video/mp4">
+                    </video>
+                </div>
+
+
+
+            </section>
+        </main>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="{% static 'js/jquery.min1.js' %}"></script>
+        <script src="{% static 'js/bootstrap.bundle.min1.js' %}"></script>
+        <script src="{% static 'js/countdown1.js' %}"></script>
+        <script src="{% static 'js/init1.js' %}"></script>
+
+    </body>
+</html>
+
+
+

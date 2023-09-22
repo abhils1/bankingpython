@@ -1,0 +1,117 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>My-Bank | Login page</title>
+
+        <!-- CSS FILES -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,700;1,200&family=Unbounded:wght@400;700&display=swap" rel="stylesheet">
+
+        <link href="{% static 'css/bootstrap.min1.css' %}" rel="stylesheet">
+
+        <link href="{% static 'css/bootstrap-icons1.css' %}" rel="stylesheet">
+
+        <link href="{% static 'css/tooplate-kool-form-pack1.css' %}" rel="stylesheet">
+<!--
+
+
+
+Bootstrap 5 Form Pack Template
+
+-->
+    </head>
+
+    <body>
+
+        <main>
+
+           <nav class="navbar fixed-top navbar-expand-lg">
+            <div class="container">
+
+                <a href="/" class="navbar-brand">
+                    <i class="bi-layers"></i> MY-BANK
+                </a>
+
+                <a href="#" class="custom-btn btn btn-lg d-lg-none ms-auto me-4">
+                    Download
+                    <i class="bi-download ms-2"></i>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-lg-5">
+
+                </div>
+            </div>
+        </nav>
+
+
+            <section class="hero-section d-flex justify-content-center align-items-center">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-5 col-12 mx-auto">
+                            <form class="custom-form login-form" role="form" method="post">
+                                {%csrf_token %}
+                                <h2 class="hero-title text-center mb-4 pb-2">Login Form</h2>
+
+                                <div class="form-floating mb-4 p-0">
+                                    <input type="text" name="username" id="text"  class="form-control" placeholder="Enter your username" required="">
+
+                                    <label for="text">Username</label>
+                                </div>
+
+                                <div class="form-floating p-0">
+                                    <input type="password" name="password" id="password" class="form-control" placeholder="Password" required="">
+
+                                    <label for="password">Password</label>
+                                </div>
+
+                                <div class="row justify-content-center align-items-center">
+                                    <div class="col-lg-5 col-12">
+                                        <button type="submit" class="form-control">Login</button>
+                                    </div>
+
+                                    <div class="col-lg-5 col-12">
+                                        <a href="{% url 'register' %}" class="btn custom-btn custom-border-btn">Register</a>
+
+                                    </div>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-wrap">
+                    <video autoplay="" loop="" muted="" class="custom-video" poster="">
+                        <source src="{% static 'videos/video.mp4' %}" type="video/mp4">
+                    </video>
+                </div>
+            </section>
+        </main>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="{% static 'js/jquery.min1.js' %}"></script>
+        <script src="{% static 'js/bootstrap.bundle.min1.js' %}"></script>
+        <script src="{% static 'js/countdown1.js' %}"></script>
+        <script src="{% static 'js/init1.js' %}"></script>
+
+    </body>
+</html>
+
+
